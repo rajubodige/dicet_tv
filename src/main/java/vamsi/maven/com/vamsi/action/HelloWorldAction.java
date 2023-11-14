@@ -26,6 +26,6 @@ public class HelloWorldAction implements DefaultAction<BaseUserContext, String> 
 
   @Action
   public void sayHelloToAll() {
-    sampleClientAction.sayHello("Hello HI everyone!");
+    sampleClientAction.sayHello("Hi bhupes everyone!");
   }
 }
