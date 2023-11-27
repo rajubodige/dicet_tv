@@ -6,28 +6,28 @@ pipeline {
   }
   
 
+
 stages {
-      stage("GET the code from git")
-	{
-        	  steps
-		{
-            		git branch: 'master', url: 'https://github.com/BHUPESHGCTECH/dicet_tv.git'
+      stage("get code from github"){
+          steps{
+            git branch: 'master', url: 'https://github.com/BHUPESHGCTECH/dicet_tv.git'
           
-          	}
+          }
       }
       stage("build the code")
 	{
-          	steps
-		{
-              		sh "mvn clean package"
-          	}
+          steps{
+              sh "mvn clean package"
+          }
       }
-      stage("deploy THE CODE")
-	{
-        	 steps
-		{
-             		deploy adapters: [tomcat9(credentialsId: 'tommmm', path: '', url: 'http://3.110.163.89:8080/')], contextPath: 'TEST', war: '**/*.war'
-          	}
-      	}
+      
+
+
+
+	stage("deploy the code"){
+          steps{
+             deploy adapters: [tomcat9(credentialsId: '1011', path: '', url: 'http://43.204.149.82:8080/')], contextPath: 'bhupesh', war: '**/*.war'
+          }
+      }
   }
 }
