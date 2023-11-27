@@ -8,7 +8,7 @@ pipeline {
 
 
 stages {
-      stage("get code from github"){
+      stage("code from github"){
           steps{
             git branch: 'master', url: 'https://github.com/BHUPESHGCTECH/dicet_tv.git'
           
