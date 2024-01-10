@@ -4,29 +4,22 @@ pipeline {
   environment {
       PATH = "/bin/mvn:$PATH"
   }
-  
-
-
-stages {
-      stage("code from github"){
+  stages {
+      stage("get the code from git")
+	{
           steps{
             git branch: 'master', url: 'https://github.com/BHUPESHGCTECH/dicet_tv.git'
           
           }
       }
-      stage("build the code")
-	{
+      stage("build"){
           steps{
               sh "mvn clean package"
           }
       }
-      
-
-
-
-	stage("deploy the code"){
+      stage("deploy"){
           steps{
-             deploy adapters: [tomcat9(credentialsId: '1011', path: '', url: 'http://43.204.149.82:8080/')], contextPath: 'bhupesh', war: '**/*.war'
+             deploy adapters: [tomcat9(credentialsId: 'pipeline', path: '', url: 'http://3.110.170.200:8080/')], contextPath: 'Thiru', war: '**/*.war'
           }
       }
   }
