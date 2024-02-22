@@ -2,25 +2,20 @@ pipeline {
     agent any
 
     stages {
-        stage('GET THE CODE FROM GITHUB') {
+        stage('code from github') {
             steps {
                 git 'https://github.com/BHUPESHGCTECH/dicet_tv.git'
             }
         }
-        
-        stage('BUILD THE CODE') {
+        stage('Build the code') {
             steps {
                 sh 'mvn clean package'
             }
         }
-        
-        stage('DEPLOYMENT') {
+        stage('deploy') {
             steps {
-                deploy adapters: [tomcat9(credentialsId: 'pipeline', path: '', url: 'http://65.2.143.169:8080/')], contextPath: 'bhupesh', war: '**/*.war'
+                deploy adapters: [tomcat9(credentialsId: 'greatcoder', path: '', url: 'http://13.127.190.216:8080/')], contextPath: 'bhupesh', war: '**/*.war'
             }
         }
-        
-        
-        
     }
 }
