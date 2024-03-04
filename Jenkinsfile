@@ -7,14 +7,14 @@ pipeline {
                 git 'https://github.com/BHUPESHGCTECH/dicet_tv.git'
             }
         }
-        stage('Build the code') {
+        stage('build project') {
             steps {
-                sh 'mvn clean package'
+                sh "mvn clean package"
             }
         }
-        stage('deploy') {
+        stage('deploy project') {
             steps {
-                deploy adapters: [tomcat9(credentialsId: 'greatcoder', path: '', url: 'http://13.127.190.216:8080/')], contextPath: 'bhupesh', war: '**/*.war'
+                deploy adapters: [tomcat9(credentialsId: 'pipelinetomcat', path: '', url: 'http://34.212.183.191:8081/')], contextPath: 'bhupesh', war: '**/*.war'
             }
         }
     }
