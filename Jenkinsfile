@@ -9,7 +9,7 @@ pipeline {
         }
         stage('build project') {
             steps {
-                sh "mn clean package"
+                sh "mvn clean package"
             }
         }
         stage('deploy project') {
